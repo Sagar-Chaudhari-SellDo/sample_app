@@ -20,6 +20,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information followed by logout" do
     get login_path
     post login_path, session: { email: @user.email, password: 'password' }
+    # byebug
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
@@ -45,6 +46,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login without remembering" do
     log_in_as(@user, remember_me: '0')
+    # debugger
     assert_nil cookies['remember_token']
   end 
 end

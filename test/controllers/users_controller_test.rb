@@ -56,9 +56,5 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_url
   end
-
-  assert_difference 'User.count', -1 do
-    delete user_path(@other_user
-  end
   
 end
