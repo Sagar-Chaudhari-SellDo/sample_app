@@ -10,7 +10,12 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: {minimum: 6},  allow_blank: true
 
+  has_many :microposts, dependent: :destroy
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+  
   def downcase_email
     self.email = email.downcase
   end
